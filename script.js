@@ -8,9 +8,42 @@ function calculateDays() {
   number.innerHTML = Math.floor(days);
   let decimals = document.getElementById("decimals");
   decimals.innerHTML = days.toFixed(6);
-  document.title = "Day " + Math.floor(days) + " at Workflow";
+  
+  const daysCount = Math.floor(days);
+  document.title = "Day " + daysCount + " at Workflow";
+  
+  // Update OG image
+  generateOGImage(daysCount);
 
-  return Math.floor(days);
+  return daysCount;
+}
+
+function generateOGImage(daysCount) {
+  // Create a canvas element
+  const canvas = document.createElement('canvas');
+  canvas.width = 1200;
+  canvas.height = 630;
+  const ctx = canvas.getContext('2d');
+
+  // Set background
+  ctx.fillStyle = '#000000';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Add text
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 80px Arial';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(`Day ${daysCount} at Workflow`, canvas.width/2, canvas.height/2);
+
+  // Convert to data URL
+  const dataUrl = canvas.toDataURL('image/png');
+  
+  // Update meta tag
+  const ogImage = document.getElementById('og-image');
+  if (ogImage) {
+    ogImage.setAttribute('content', dataUrl);
+  }
 }
 
 let daysSinceInception = calculateDays();
