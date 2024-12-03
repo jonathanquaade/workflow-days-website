@@ -8,7 +8,7 @@ function calculateDays() {
   number.innerHTML = Math.floor(days);
   let decimals = document.getElementById("decimals");
   decimals.innerHTML = days.toFixed(6);
-  document.title = "Day " + Math.floor(days) + " | Ramp";
+  document.title = "Day " + Math.floor(days) + " at Workflow";
 
   return Math.floor(days);
 }
