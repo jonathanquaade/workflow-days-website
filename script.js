@@ -1,5 +1,5 @@
 function calculateDays() {
-  let date1 = new Date("11/18/24");
+  let date1 = new Date("15/07/25");
   let date2 = new Date();
   let timeDifference = date2.getTime() - date1.getTime();
   let days = timeDifference / (1000 * 3600 * 24);
